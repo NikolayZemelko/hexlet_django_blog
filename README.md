@@ -1,0 +1,1 @@
+`hexlet_django_blog` is an application for blogging.
