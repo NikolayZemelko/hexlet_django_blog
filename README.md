@@ -1,1 +1,1 @@
-`hexlet_django_blog` is an application for blogging.
+**hexlet_django_blog** is an application for blogging.
