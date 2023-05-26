@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hexlet Django Blog</title>
-</head>
-<body>
-    <div>
-        <h1>Info about the project: {{ info }}</h1>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Эксперименты с Django на Хекслете{% endblock %}
+
+{% block content %}
+    <h1>О блоге</h1>
+    <p>Эксперименты с Django на Хекслете</p>
+    <p>{{ tags|join:', ' }}</p>
+{% endblock %}
