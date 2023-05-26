@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse('Hello my brother')
+    return render(request, 'articles/index.html', context={
+        'article': 'We are a humans!',
+    })
