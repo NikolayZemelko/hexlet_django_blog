@@ -9,3 +9,6 @@ show_sqlReq:
 
 migrate:
 	poetry run python manage.py migrate $(m) $(v)
+
+lint:
+	poetry run flake8 article hexlet_django_blog manage.py views.py
