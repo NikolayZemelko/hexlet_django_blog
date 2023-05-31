@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Articles</title>
-</head>
-<body>
-    <div>
-        <h1>Main event: {{ article }}</h1>
-    </div>
-    {% block get_article %}{% endblock %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block article_content %}
+    <h1>Список статей</h1>
+    {% for article in articles %}
+        <h2>{{ article.name }}</h2>
+        <div>{{ article.body|slice:":200" }}</div>
+    {% endfor %}
+{% endblock %}
+
