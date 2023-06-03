@@ -8,3 +8,13 @@ class Article(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=200)
+    comment_body = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name

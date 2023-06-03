@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block article %}
     <div>
-        <h1>Статья номер {{ article_id }}. Тег {{ tag }}</h1>
+        <h2>Статья номер {{ article.id }}</h2>
+        <p>Тема статьи: {{ article.body }}</p>
+        <a href="{% url 'comments' article.id %}">Комментарии</a>
+        {% block comments %}{% endblock %}
     </div>
 {% endblock %}
