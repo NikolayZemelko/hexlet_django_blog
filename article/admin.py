@@ -12,6 +12,6 @@ class ArticleAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'comment_body', 'timestamp')
-    search_fields = ['name', 'comment_body']
+    list_display = ('name', 'content', 'timestamp')
+    search_fields = ['name', 'content']
     list_filter = (('timestamp', DateFieldListFilter),)
