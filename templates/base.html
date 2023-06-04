@@ -1,3 +1,4 @@
+{% load bootstrap4 i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +6,25 @@
     <title>Django на Хекслете</title>
 </head>
 <body>
-    <div id="sidebar">
-            <ul>
-                <li><a href="{% url 'index' %}">Главная</a></li>
-                <li><a href="{% url 'about' %}">О блоге</a></li>
-                <li><a href="{% url 'articles-index' %}">Статьи</a></li>
-            </ul>
-    </div>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+<div id="sidebar">
+    <ul>
+        <li><a href="{% url 'index' %}">Главная</a></li>
+        <li><a href="{% url 'about' %}">О блоге</a></li>
+        <li><a href="{% url 'articles-index' %}">Статьи</a></li>
+        <li><a href="{% url 'articles_create' %}">Создать статью</a></li>
+    </ul>
+</div>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+<div id="article">
     {% block article %}{% endblock %}
+</div>
+<div id="article_content">
     {% block article_content %}{% endblock %}
+</div>
+<div id="article_create">
+    {% block create_article %}{% endblock %}
+</div>
 </body>
 </html>

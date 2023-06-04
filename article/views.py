@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.views import View
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 
-from .forms import CommentArticleForm
+from .forms import CommentArticleForm, ArticleForm
 from article.models import Article, Comment
 
 
@@ -34,3 +34,18 @@ class ArticleView(View):
         return HttpResponseRedirect(reverse('article', kwargs={
             'id': kwargs['id'],
         }))
+
+
+class ArticleFormCreateView(View):
+
+    def get(self, request, *args, **kwargs):
+        form = ArticleForm()
+        return render(request, 'articles/create.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('articles-index')
+
+        return render(request, 'articles/create.html', {'form': form})

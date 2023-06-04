@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap4 i18n %}
+{% block create_article %}
+    {% if form.errors %}
+        <div>
+            <ul>
+                {% for error in form.errors %}
+                    <li><strong>{{ error|escape }}</strong></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% bootstrap_button "Save" button_type="submit" button_class="btn-primary" %}
+    <form action="{% url 'articles_create' %}" method="post">
+        {% csrf_token %}
+        <table border="1">
+            {{ form }}
+        </table>
+        <input type="submit" value="Создать">
+    </form>
+{% endblock %}
