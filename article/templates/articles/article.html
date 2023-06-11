@@ -6,6 +6,18 @@
         <p>Тема статьи: {{ article.body }}</p>
         <div>
             <h3>Комментарии на тему:</h3>
+                {% if comments %}
+                    <ol>
+                        {% for comment in comments %}
+                            <li>
+                                <h3>{{ comment.name }}: </h3>
+                                <p>{{ comment.content }}</p>
+                            </li>
+
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            <hr>
             <form action="{% url 'article' article.id %}" method="post">
                 {% csrf_token %}
                 <table border="1">

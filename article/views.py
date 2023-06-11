@@ -19,21 +19,31 @@ class IndexView(View):
 class ArticleView(View):
 
     def get(self, request, *args, **kwargs):
-        article = get_object_or_404(Article, id=kwargs['id'])
-        comments = Comment.objects.filter(article__id=kwargs['id'])
+        article_id = kwargs.get('id')
+        article = get_object_or_404(Article, id=article_id)
+        form = CommentArticleForm()
+        comments = Comment.objects.filter(article_id=article_id)
         return render(request, 'articles/article.html', context={
             'article': article,
             'comments': comments,
+            'form': form
         })
 
     def post(self, request, *args, **kwargs):
+
+        article_id = kwargs.get('id')
         form = CommentArticleForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            comment = form.save(commit=False)
+            comment.name = form.cleaned_data['name']
+            comment.content = form.cleaned_data['content']
+            comment.article_id = Article.objects.get(id=article_id)
+            comment.save()
+            return redirect('article', id=article_id)
 
         return HttpResponseRedirect(reverse('article', kwargs={
-            'id': kwargs['id'],
+            'id': article_id,
         }))
 
 
