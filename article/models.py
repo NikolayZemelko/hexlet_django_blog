@@ -14,7 +14,7 @@ class Comment(models.Model):
     name = models.CharField('name', max_length=200)
     content = models.CharField('content', max_length=200)
     timestamp = models.DateTimeField(auto_now_add=True)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
