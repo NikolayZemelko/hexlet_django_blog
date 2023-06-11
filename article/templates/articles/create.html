@@ -10,7 +10,6 @@
             </ul>
         </div>
     {% endif %}
-    {% bootstrap_button "Save" button_type="submit" button_class="btn-primary" %}
     <form action="{% url 'articles_create' as url_to %}" method="post">
         {% csrf_token %}
         <table border="1">
